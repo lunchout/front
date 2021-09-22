@@ -2,7 +2,7 @@
 
 # Lunch-Out Frontend
 
-This is a recommendation app for lunch places done as a technical exercise for a hiring process.
+This is a recommendation app for lunch places done as a technical exercise for a hiring process. I decided to limit the results to 8 restaurants to reduce 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## Instructions
@@ -16,7 +16,7 @@ At [redacted] we love food, and we enjoy trying new places for lunch! Please hel
 
 UI to communicate with the API (query and display the result)
 
-#### Inputs:
+### Inputs:
 
 - Localisation
 - Max distance from localisation
@@ -28,7 +28,7 @@ UI to communicate with the API (query and display the result)
     - Klaas likes: [ Japanese, Belgian ]
     - Gaelle likes: [ Japanese, Lebanese ]
 
-#### Outputs:
+### Outputs:
 
 - List of 10 best restaurants / places to lunch given the inputs
 - Try to make it that the best matching restaurants come first, but you still allow suggestions for restaurants that match less
