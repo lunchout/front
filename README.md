@@ -1,5 +1,7 @@
 <div align="center"><img src="./documentation/lunchout-logo.svg" /></div>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2785832c-0554-41c4-be84-77a44c6ea9b2/deploy-status)](https://app.netlify.com/sites/lunchout/deploys)
+
 # Lunch-Out Frontend
 
 This is a recommendation app for lunch places done as a technical exercise for a hiring process. I decided to limit the results to 8 restaurants to reduce 

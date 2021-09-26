@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cookie from 'react-cookies';
 import Button from '../../elements/Button';
 import Form from '../../elements/Form';
@@ -33,6 +33,10 @@ const Login = () => {
             isEmptyStr(passwordRef.current.value)
         );
     };
+
+    useEffect(() => {
+        onInputChange();
+    })
 
     return (
         <div css={loginPageStyle}>
