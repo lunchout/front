@@ -1,11 +1,15 @@
 export const loginPageStyle = {
-    maxWidth       : '60vw',
-    margin         : '0 auto',
-    display        : 'flex',
-    justifyContent : 'center',
-    flexDirection  : 'column',
-    alignItems     : 'center',
-    height         : '100%',
+    width              : '100%',
+    margin             : '0',
+    padding            : '0 20vw',
+    display            : 'flex',
+    justifyContent     : 'center',
+    flexDirection      : 'column',
+    alignItems         : 'center',
+    height             : '100%',
+    background         : 'url("login_bg.png")',
+    backgroundPosition : 'top center',
+    backgroundSize     : 'cover',
 
 };
 
