@@ -13,12 +13,17 @@ const AppStateProvider = ({ children, ...props }) => {
         setIsLoggedIn(false);
     };
 
+    const backToSearch = () => {
+        setResults(null);
+    }
+
     const defaultState = {
         isLoggedIn,
         setIsLoggedIn,
         results,
         setResults,
         logOut,
+        backToSearch,
     };
 
     return (

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Restaurant from '../../elements/Restaurant';
 import useAppState from '../../hooks/useAppState';
 import {
+    backToSearchStyle,
  orderButtonStyle, orderContainerStyle, resultsContainerStyle, resultsGridStyle, resultsHeaderStyle
 } from './styles';
 
 const Results = () => {
-    const { results } = useAppState();
+    const { results, backToSearch } = useAppState();
     const [orderedByRatings, setOrderedByRatings] = useState(true);
     const [restaurants, setRestaurants] = useState(results.restaurants);
 
@@ -48,7 +49,12 @@ const Results = () => {
     return (
         <div css={resultsContainerStyle}>
             <div css={resultsHeaderStyle}>
-                <h5>Results provided by Yelp</h5>
+                <div>
+                    <button css={backToSearchStyle} onClick={backToSearch} type="button">
+                        <i className="fas fa-angle-left" />
+                        {' Back to search'}
+                    </button>
+                </div>
                 <div css={orderContainerStyle}>
                     <h5>Order by&nbsp;:&nbsp;</h5>
                     <div>
@@ -77,6 +83,7 @@ const Results = () => {
                     <Restaurant data={res} key={res.id} />
                 ))}
             </div>
+            <h5>Results provided by Yelp Fusion</h5>
         </div>
     )
 };
