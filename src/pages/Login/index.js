@@ -24,7 +24,13 @@ const Login = () => {
             password : passwordRef.current.value,
         }).then(res => {
             if (res.status === 200) {
-                cookie.save('token', res.data.token);
+                cookie.save(
+                    'token',
+                    res.data.token,
+                    {
+                        maxAge : 24 * 60 * 60,
+                    }
+                );
                 setIsLoggedIn(true);
             } else {
                 setError(res.error);
