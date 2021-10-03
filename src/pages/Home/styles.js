@@ -1,10 +1,11 @@
 export const homeContainerStyle = {
-    maxWidth      : 830,
-    display       : 'flex',
-    flexDirection : 'column',
-    alignItems    : 'center',
-    margin        : '120px auto auto',
-    flexGrow      : 1,
+    width          : '90vw',
+    display        : 'flex',
+    flexDirection  : 'column',
+    alignItems     : 'center',
+    justifyContent : 'center',
+    margin         : 'auto',
+    flexGrow       : 1,
 
     h2 : {
         maxWidth   : 375,
@@ -12,15 +13,27 @@ export const homeContainerStyle = {
         fontSize   : '24px',
         lineHeight : '31px',
         textAlign  : 'center',
+    },
+
+    '@media (min-width: 400px)' : {
+        maxWidth : 830,
     }
 };
 
 export const formExtraStyles = {
-    gridTemplateColumns : 'auto 600px auto',
+    gridTemplateColumns : '70px auto 50px',
+    width               : '100%',
 
     '& > button' : {
-        gridColumnStart : '2',
-        gridColumnEnd   : '4',
+        gridColumnStart : '1',
+        gridColumnEnd   : '3',
+    },
+
+    '@media (min-width: 400px)' : {
+        '& > button' : {
+            gridColumnStart : '2',
+            gridColumnEnd   : '4',
+        },
     }
 };
 
@@ -30,24 +43,44 @@ export const sideContent = {
 };
 
 export const inputsRowStyle = {
-    gridColumnStart : '1',
-    gridColumnEnd   : '4',
-    display         : 'flex',
-    flexDirection   : 'row',
-    justifyContent  : 'flex-start',
-    alignItems      : 'center',
-    width           : '100%',
+    gridColumnStart     : '1',
+    gridColumnEnd       : '4',
+    display             : 'grid',
+    gridTemplateColumns : '70px auto',
+    gridTemplateRows    : 'repeat(2, auto)',
+    rowGap              : 15,
+    columnGap           : 12,
+    flexDirection       : 'row',
+    justifyContent      : 'flex-start',
+    alignItems          : 'center',
+    width               : '100%',
 
-    '& > *:not(:last-child)' : {
-        marginRight : 12,
+    label : {
+        textAlign : 'right',
     },
 
-    '& > div' : {
-        flexGrow : 1,
+    '@media (min-width: 400px)' : {
+        gridColumnStart : '1',
+        gridColumnEnd   : '4',
+        display         : 'flex',
+        flexDirection   : 'row',
+        justifyContent  : 'flex-start',
+        alignItems      : 'center',
+        rowGap          : 0,
+        columnGap       : 0,
 
-        '&:first-of-type' : {
-            marginRight : 24,
-            flexGrow    : 2,
+        '& > label' : {
+            marginLeft  : 12,
+            marginRight : 12,
+        },
+
+        '& > div' : {
+            flexGrow : 1,
+
+            '&:first-of-type' : {
+                marginRight : 24,
+                flexGrow    : 2,
+            },
         },
     }
 }
@@ -65,7 +98,11 @@ export const attendeesContainerStyle = {
     display         : 'flex',
     flexDirection   : 'column',
     gridColumnStart : '2',
-    gridColumnEnd   : '4',
+    gridColumnEnd   : '3',
+
+    '@media (min-width: 400px)' : {
+        gridColumnEnd : '4',
+    }
 };
 
 export const attendeeButtonStyle = present => ({

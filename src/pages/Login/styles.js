@@ -31,8 +31,12 @@ export const titleContainerStyle = {
 }
 
 export const logoStyle = {
-    width        : 530,
-    maxWidth     : '80%',
+    width        : '80vw',
     transform    : 'rotate(-8deg)',
     marginBottom : 25,
+
+    '@media (min-width: 400px)' : {
+        width    : 530,
+        maxWidth : '80%',
+    }
 };

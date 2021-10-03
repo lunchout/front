@@ -1,6 +1,6 @@
 export const resultsContainerStyle = {
     flexGrow      : 1,
-    padding       : '0 45px',
+    padding       : '0 5vw',
     display       : 'flex',
     flexDirection : 'column',
 
@@ -10,6 +10,10 @@ export const resultsContainerStyle = {
         margin     : '12px 0',
         padding    : 0,
         textAlign  : 'center',
+    },
+
+    '@media (min-width: 400px)' : {
+        padding : '0 45px',
     }
 };
 
@@ -49,13 +53,18 @@ export const backToSearchStyle = {
 };
 
 export const resultsGridStyle = {
-    display             : 'grid',
-    gridTemplateColumns : '1fr 1fr',
-    gridTemplateRows    : 'repeat(5, 1fr)',
-    gridAutoFlow        : 'column',
-    gridColumnGap       : 30,
-    gridRowGap          : 15,
-    flexGrow            : 1,
+    display       : 'flex',
+    flexDirection : 'column',
+    gridColumnGap : 30,
+    gridRowGap    : 15,
+    flexGrow      : 1,
+
+    '@media (min-width: 400px)' : {
+        display             : 'grid',
+        gridTemplateColumns : '1fr 1fr',
+        gridTemplateRows    : 'repeat(5, 1fr)',
+        gridAutoFlow        : 'column',
+    }
 };
 
 export const noResultsStyle = {

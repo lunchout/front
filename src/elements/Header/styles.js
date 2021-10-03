@@ -23,4 +23,8 @@ export const logOutButton = {
         color       : '#e63a20',
         background  : 'white',
     },
+
+    '@media (max-width: 399px)' : {
+        padding : 8,
+    }
 }

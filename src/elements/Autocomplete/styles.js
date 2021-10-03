@@ -27,6 +27,8 @@ export const suggestionsStyle = {
     display       : 'flex',
     flexDirection : 'column',
     boxShadow     : '2px 2px 15px #00000099',
+    maxHeight     : '350px',
+    overflowY     : 'scroll',
 
     button : {
         background : 'transparent',
