@@ -56,4 +56,17 @@ export const resultsGridStyle = {
     gridColumnGap       : 30,
     gridRowGap          : 15,
     flexGrow            : 1,
+};
+
+export const noResultsStyle = {
+    flexGrow       : 1,
+    display        : 'flex',
+    flexDirection  : 'column',
+    alignItems     : 'center',
+    justifyContent : 'center',
+
+    h1 : {
+        fontWeight : 500,
+        color      : '#CD0010',
+    }
 }

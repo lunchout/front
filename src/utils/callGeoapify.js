@@ -13,7 +13,11 @@ const reverseCoords = async pos => {
         method : 'GET',
     }).catch(e => { throw new Error(e) });
 
-    return (response.json());
+    if (response.status === 200) {
+        return (response.json());
+    }
+
+    throw new Error(response.text());
 }
 
 export const reverseGeocode = callback => {

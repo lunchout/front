@@ -6,11 +6,14 @@ export const AppStateContext = createContext(null);
 
 const AppStateProvider = ({ children, ...props }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(!!cookie.load('token'));
+    const [srchInputs, setSrchInputs] = useState(null);
     const [results, setResults] = useState(null);
 
     const logOut = () => {
         cookie.remove('token');
+        setResults(null);
         setIsLoggedIn(false);
+        setSrchInputs(null);
     };
 
     const backToSearch = () => {
@@ -24,6 +27,8 @@ const AppStateProvider = ({ children, ...props }) => {
         setResults,
         logOut,
         backToSearch,
+        srchInputs,
+        setSrchInputs
     };
 
     return (

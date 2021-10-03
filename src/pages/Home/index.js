@@ -29,7 +29,7 @@ const Home = ({ data }) => {
     const [attendees, setAttendees] = useState(null);
     const [whosIn, setWhosIn] = useState([]);
     const [priceRange, setPriceRange] = useState(0);
-    const { setResults } = useAppState();
+    const { setResults, srchInputs, setSrchInputs } = useAppState();
 
     useEffect(() => {
         if (!data.loading) {
@@ -37,6 +37,16 @@ const Home = ({ data }) => {
                 ...attendee,
                 present : false,
             })))
+
+            distanceRef.current.value = 500;
+
+            if (srchInputs) {
+                setPriceRange(srchInputs.priceRange);
+                setCoords(srchInputs.coords);
+                setWhosIn(srchInputs.whosIn);
+                locationRef.current.value = srchInputs.locationRef;
+                distanceRef.current.value = srchInputs.distanceRef;
+            }
         }
     }, [data])
 
@@ -62,7 +72,7 @@ const Home = ({ data }) => {
             const { latitude, longitude } = pos.coords;
             setCoords({ latitude, longitude });
             setLocationDisabled(false);
-        });
+        })
     };
 
     const onLocationSelect = sugg => {
@@ -131,8 +141,15 @@ const Home = ({ data }) => {
             price,
             cuisines,
         }).then(res => {
+            setSrchInputs({
+                coords,
+                priceRange,
+                whosIn,
+                distanceRef : distanceRef.current.value,
+                locationRef : locationRef.current.value,
+            });
             setResults({
-                restaurants : res.businesses,
+                restaurants : res.data.businesses,
             });
         });
     };
@@ -184,6 +201,7 @@ const Home = ({ data }) => {
                         onClick={getCurrentPosition}
                         extraCss={sideContent}
                         disabled={locationDisabled}
+                        testid="current_location_btn"
                     >
                         <i className="fas fa-location-arrow" />
                     </Button>
@@ -200,7 +218,6 @@ const Home = ({ data }) => {
                             myRef={distanceRef}
                             onChange={onInputChange}
                             unit="m"
-                            defaultValue={500}
                         />
                     </>
                     <>

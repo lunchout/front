@@ -11,6 +11,12 @@ export const loginPageStyle = {
     backgroundPosition : 'top center',
     backgroundSize     : 'cover',
 
+    h5 : {
+        color      : '#CD0010',
+        fontWeight : '500',
+        fontSize   : 20,
+        margin     : '10px 0 0 0'
+    }
 };
 
 export const titleContainerStyle = {

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import Button from '../../elements/Button';
 import Restaurant from '../../elements/Restaurant';
 import useAppState from '../../hooks/useAppState';
 import {
     backToSearchStyle,
+ noResultsStyle,
  orderButtonStyle, orderContainerStyle, resultsContainerStyle, resultsGridStyle, resultsHeaderStyle
 } from './styles';
 
@@ -78,11 +80,24 @@ const Results = () => {
                     </div>
                 </div>
             </div>
-            <div css={resultsGridStyle}>
-                {restaurants.map(res => (
-                    <Restaurant data={res} key={res.id} />
-                ))}
-            </div>
+            {restaurants.length ? (
+                <div css={resultsGridStyle}>
+                    {restaurants.map(res => (
+                        <Restaurant data={res} key={res.id} />
+                    ))}
+                </div>
+            ) : (
+                <div css={noResultsStyle}>
+                    <h1>No results</h1>
+                    <Button
+                        onClick={backToSearch}
+                        type="button"
+                    >
+                        <i className="fas fa-angle-left" />
+                        {' Back to search'}
+                    </Button>
+                </div>
+            )}
             <h5>Results provided by Yelp Fusion</h5>
         </div>
     )

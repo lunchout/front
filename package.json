@@ -43,6 +43,7 @@
         ]
     },
     "devDependencies": {
-        "@emotion/babel-preset-css-prop": "^11.2.0"
+        "@emotion/babel-preset-css-prop": "^11.2.0",
+        "msw": "^0.35.0"
     }
 }

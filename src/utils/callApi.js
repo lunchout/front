@@ -1,14 +1,14 @@
 import cookie from 'react-cookies';
 import isEmptyObject from "./isEmptyObject";
 
-export default async (
+export default (
     endpoint,
     method = 'GET',
     body = {},
     headers = {},
 ) => {
     const token = cookie.load('token');
-    const response = await fetch(`${process.env.REACT_APP_API_BASEURL}/${endpoint}`, {
+    return fetch(`${process.env.REACT_APP_API_BASEURL}/${endpoint}`, {
         method,
         headers : {
             'Content-Type' : 'application/json',
@@ -16,11 +16,15 @@ export default async (
             ...headers
         },
         ...!isEmptyObject(body) && { body : JSON.stringify(body) },
-    }).catch(e => { throw new Error(e) });
+    }).then(response => {
+        if (!response.ok || response.status !== 200) {
+            return response.text().then(error => {
+                return ({ error, status : response.status })
+            });
+        }
 
-    if (response.status !== 200) {
-        throw new Error(response.error);
-    }
-
-    return response.json();
+        return response.json().then(data => {
+            return ({ data, status : response.status })
+        });
+    });
 };

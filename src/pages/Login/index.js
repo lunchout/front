@@ -14,16 +14,23 @@ const Login = () => {
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
     const [submitDisabled, setSubmitDisabled] = useState(true);
+    const [error, setError] = useState(null);
     const { setIsLoggedIn } = useAppState();
 
-    const onSubmit = async event => {
+    const onSubmit = event => {
         event.preventDefault();
-        await callApi('login', 'POST', {
+        callApi('login', 'POST', {
             username : usernameRef.current.value,
             password : passwordRef.current.value,
         }).then(res => {
-            cookie.save('token', res.token);
-            setIsLoggedIn(true);
+            if (res.status === 200) {
+                cookie.save('token', res.data.token);
+                setIsLoggedIn(true);
+            } else {
+                setError(res.error);
+            }
+        }).catch(e => {
+            throw new Error(e);
         });
     };
 
@@ -74,6 +81,7 @@ const Login = () => {
                     Log in
                 </Button>
             </Form>
+            <h5>{error || (<>&nbsp;</>)}</h5>
         </div>
     );
 };

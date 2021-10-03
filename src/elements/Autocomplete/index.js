@@ -62,14 +62,20 @@ const Autocomplete = ({
                 autocomplete={false}
                 disabled={disabled}
             />
-            {!!(Array.isArray(suggestions) && suggestions.length) && (
-                <div css={suggestionsStyle} ref={wrapperRef}>
-                    {suggestions.map(sugg => (
-                        <button onClick={() => onSuggestionSelect(sugg)} key={`sugg_${sugg.key}`}>
-                            {sugg.display}
-                        </button>
+            {Array.isArray(suggestions) && (
+                suggestions.length ? (
+                    <div css={suggestionsStyle} ref={wrapperRef}>
+                        {suggestions.map(sugg => (
+                            <button onClick={() => onSuggestionSelect(sugg)} key={`sugg_${sugg.key}`}>
+                                {sugg.display}
+                            </button>
                     ))}
-                </div>
+                    </div>
+                ) : (
+                    <div css={suggestionsStyle} ref={wrapperRef}>
+                        <button disabled>No suggestion</button>
+                    </div>
+                )
             )}
         </div>
     )
